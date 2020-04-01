@@ -9,20 +9,23 @@ origin_path = sys.argv[1] if len(
     sys.argv) > 1 else '/Users/macchester92/Desktop/Sorting Hat'
 dest_path = '/Users/macchester92/Desktop/test_folder'
 
+
 # define trigger for observer
+
+
 class SortingHatHandler(FileSystemEventHandler):
     def on_modified(self, event):
         for file in os.listdir(origin_path):
-            print(src_path)
-
-            #resolves error -43 when directory is partially moved to the sorting folder
-            if os.path.isdir(file):
-                time.sleep(5)
-
-            move_file_to_destination_dir(file)
+            file_path = os.path.join(origin_path, file)
+            if not os.path.isdir(file_path):
+                move_file_to_destination_dir(file)
+            else:
+                print(f'{file} is a directory. Skipping...')
 
 
 # actions to apply
+
+
 def move_file_to_destination_dir(file):
     old_file_path = os.path.join(origin_path, file)
     if not file.startswith('.'):
@@ -39,6 +42,7 @@ def check_folder(file_ext, file):
     if not mega_path:
         os.mkdir(mega_path)
     return mega_path
+
 
 # configuring the app
 observer = Observer()
