@@ -14,6 +14,7 @@ dest_path = sys.argv[2] if len(
 
 
 class SortingHatHandler(FileSystemEventHandler):
+    # Creating FileHandler instance for every file in the directory
     def on_created(self, event):
         for obj in os.listdir(sorter_path):
             if not obj.startswith('.') or not obj.endswith('.app'):
