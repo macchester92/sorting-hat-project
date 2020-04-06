@@ -4,11 +4,6 @@ import shutil
 import time
 
 
-sorter_path = sys.argv[1] if len(
-    sys.argv) > 1 else '/Users/macchester92/Desktop/Sorting Hat'
-dest_path = sys.argv[2] if len(
-    sys.argv) > 1 else'/Users/macchester92/Desktop/test_folder'
-
 class FileHandler:
     def __init__(self, filename):
         self.filename = filename
